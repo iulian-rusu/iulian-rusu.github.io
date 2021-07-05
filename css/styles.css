@@ -187,6 +187,10 @@ small, .small {
   font-size: 0.875em;
 }
 
+.medium {
+  font-size: 0.925em;
+}
+
 mark, .mark {
   padding: 0.2em;
   background-color: #fcf8e3;
@@ -3209,7 +3213,7 @@ textarea.form-control-lg {
   border-color: #1abc9c;
 }
 .btn-outline-primary:hover {
-  color: #fff;
+  color: #000;
   background-color: #1abc9c;
   border-color: #1abc9c;
 }
@@ -3217,7 +3221,7 @@ textarea.form-control-lg {
   box-shadow: 0 0 0 0.25rem rgba(26, 188, 156, 0.5);
 }
 .btn-check:checked + .btn-outline-primary, .btn-check:active + .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
-  color: #fff;
+  color: #000;
   background-color: #1abc9c;
   border-color: #1abc9c;
 }
@@ -7358,6 +7362,14 @@ textarea.form-control-lg {
 
 .text-secondary {
   color: #2c3e50 !important;
+}
+
+.text-purple {
+  color: var(--bs-purple) !important;
+}
+
+.text-dim {
+  color: rgb(129, 129, 129) !important;
 }
 
 .text-success {
