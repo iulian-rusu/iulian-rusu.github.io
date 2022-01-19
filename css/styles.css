@@ -608,10 +608,12 @@ progress {
 .container-md,
 .container-sm {
   width: 100%;
+  min-width: 300px !important;
   padding-right: var(--bs-gutter-x, 0.75rem);
   padding-left: var(--bs-gutter-x, 0.75rem);
   margin-right: auto;
   margin-left: auto;
+  max-height: 7vh !important;
 }
 
 @media (min-width: 576px) {
@@ -4007,6 +4009,7 @@ textarea.form-control-lg {
 }
 
 .navbar-collapse {
+  display: none;
   flex-basis: 100%;
   flex-grow: 1;
   align-items: center;
@@ -10877,7 +10880,9 @@ html {
 .page-section {
   padding: 6rem 0;
   min-height: 100vh;
+  min-width: 300px;
 }
+
 .page-section .page-section-heading {
   font-size: 2.25rem;
   line-height: 2rem;
@@ -10965,7 +10970,7 @@ html {
   padding: 0.8rem;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 0px) {
   #mainNav {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
@@ -11090,4 +11095,19 @@ html {
 
 .copyright {
   background-color: #000;
+  min-width: 300px !important;
+}
+
+#page-top section {
+    min-width: 300px !important;
+}
+
+@media (max-width: 400px) {
+  #page-top section {
+    min-height: 1000px;
+  }
+
+  #about {
+    min-height: 1200px !important;
+  }
 }
