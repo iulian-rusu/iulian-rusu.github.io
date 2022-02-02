@@ -249,8 +249,8 @@ pre code {
 }
 
 code {
-  font-size: 0.875em;
-  color: #d63384;
+  font-size: 1em;
+  color: var(--bs-primary);
   word-wrap: break-word;
 }
 a > code {
@@ -609,7 +609,6 @@ progress {
 .container-sm {
   width: 100%;
   height: max-content;
-  min-width: 300px !important;
   padding-right: var(--bs-gutter-x, 0.75rem);
   padding-left: var(--bs-gutter-x, 0.75rem);
   margin-right: auto;
@@ -10887,6 +10886,7 @@ html {
   font-size: 2.25rem;
   line-height: 2rem;
 }
+
 @media (min-width: 992px) {
   .page-section .page-section-heading {
     font-size: 3rem;
@@ -11104,5 +11104,11 @@ html {
 }
 
 #nav-container {
-  max-height: 8vh;
+  max-height: 4rem;
+}
+
+@media (max-width: 992px) {
+  #nav-links {
+    margin-top: 0.25rem !important;
+  }
 }
