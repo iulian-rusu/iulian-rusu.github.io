@@ -249,8 +249,11 @@ pre code {
 }
 
 code {
-  font-size: 1em;
-  color: var(--bs-primary);
+  font-size: 0.875em;
+  color: var(--bs-light);
+  background-color: var(--bs-gray);
+  padding: 0.1em 0.2em;
+  border-radius: 0.2em;
   word-wrap: break-word;
 }
 a > code {
