@@ -252,7 +252,7 @@ code {
   font-size: 0.875em;
   color: var(--bs-light);
   background-color: var(--bs-gray);
-  padding: 0.1em 0.2em;
+  padding: 0.1em 0.25em;
   border-radius: 0.2em;
   word-wrap: break-word;
 }
