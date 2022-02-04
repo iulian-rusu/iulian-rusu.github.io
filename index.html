@@ -207,9 +207,9 @@
                                 <ul>
                                     <li>Designing a distributed Web-service architecture.</li>
                                     <li>Creating a RESTful API for accesing database resources.</li>
-                                    <li>Performing authentication and authorization using <i>JWT.</i></li>
+                                    <li>Performing authentication and authorization using JWT.</li>
                                     <li>Working with third-party services.</li>
-                                    <li>Automatically deploying servers inside <i>Docker</i> containers.</li>
+                                    <li>Automatically deploying servers inside Docker containers.</li>
                                     <li>Using Git more efficiently to cooperate with my teammates.</li>
                                 </ul>
                             </p>
@@ -229,11 +229,11 @@
                             <p>
                                 The complete list of components is as follows:
                                 <ul>
-                                    <li>A <i>MySQL</i> database server, running on port <code>3435</code> (in Docker) or <code>3306</code> (locally).</li>
-                                    <li>A <i>Spring Boot</i> backend server on port <code>8008</code> written in Kotlin.</li>
-                                    <li>A <i>Node.js</i> server on port <code>8010</code> that uses WebSockets to notify users.</li>
-                                    <li>An <i>Angular</i> application served by <i>Nginx</i> on port <code>4200</code> which is the main web frontend.</li>
-                                    <li>A <i>QT</i> desktop application written in C++ that is used for administration.</li>
+                                    <li><b class="text-info fw-bold">MySQL</b> database server, running on port <code>3435</code> (in Docker) or <code>3306</code> (locally).</li>
+                                    <li><b class="text-info fw-bold">Spring Boot</b> backend server on port <code>8008</code> written in Kotlin.</li>
+                                    <li><b class="text-info fw-bold">Node.js</b> server on port <code>8010</code> that uses WebSockets to notify users.</li>
+                                    <li><b class="text-info fw-bold">Angular</b> application served by Nginx on port <code>4200</code> which is the main web frontend.</li>
+                                    <li><b class="text-info fw-bold">QT</b> desktop application written in C++ that is used for administration.</li>
                                 </ul>
                             </p>
                         </span>
@@ -248,21 +248,24 @@
                             <p>
                                 &emsp; This is an educational project aimed at understanding how neural networks work on a low level, as 
                                 well as implementing a Genetic Algorithm for training a Multilayer-Perceptron neural network. The project
-                                is implemented in C++ and provides a mini-library with a custom implementation of 
-                                a neural network, including activation functions, utilities for dataset manipulation and training metrics.
+                                is implemented in C++ and provides a small library abbreviated as <code>gnnt</code>. It contains a custom
+                                implementation of a neural network, including activation functions, utilities for dataset manipulation and 
+                                training metrics.
                                 The neural network architecture is defined at compile-time for optimization purposes, using templates to 
-                                specify the layers with their respective actiovatioin functions. The library was designed with genericity
-                                and efficiency in mind, supporting custom data types instead of basic floating point numbers and being able
-                                to handle an arbitrary amount of hidden layers.
+                                specify the layers with their respective activation functions. The library was designed with genericity
+                                and efficiency in mind, supporting custom underlying data types instead of <code>float</code> or <code>double</code>.
+                                The implementation supports a variable number of hidden layers, each being specified as a template argument using
+                                the <code>gnnt::mlp::layer</code> class template. This has several performance advantages, like the ability of the 
+                                compiler to better optimize the code, not needing to dynamically allocate memory at runtime and the possibility to
+                                implement forward propagation using a <i>fold-expression</i> (see the <code>fold()</code> method 
+                                <a href="https://github.com/iulian-rusu/genetic-nn-trainer/blob/main/gnnt/gnnt/mlp/network.hpp">here</a>).
                             </p>
                             <p>
                                 The main focus of the project was specifically on using a Genetic Algorithm to train the network. That is, each
                                 chromosome was represented by the weights and biases of the network, other parameters being taken as constants.
-                                Due to the large size of some networks, this training technique proved very slow, although it is independent of
-                                architecture and can be used to train pretty much any kind of model. As an example of a practical application,
-                                the project provides a desktop interface written in QT which uses the library to train a network. The graphical 
-                                interface provides a 28x28 canvas where the user can draw grayscale images. The ultimate goal is, of course, 
-                                to recognize the digits drawn using the trained neural network.
+                                As an example of a practical application, the project provides a desktop interface written in QT which uses the 
+                                library to train a network. The graphical interface provides a 28x28 canvas where the user can draw grayscale images. 
+                                The ultimate goal is, of course, to recognize the digits drawn using the trained neural network.
                             </p>
                             <div class="my-3 text-info d-flex align-items-center flex-column">
                                 <a class=" btn btn-outline-info" href="https://github.com/iulian-rusu/genetic-nn-trainer">
@@ -273,7 +276,7 @@
                             <h4>Digit Recognition</h4>
                             <p>
                                 &emsp; To train the network, the handwritten digits from the <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a>
-                                dataset have been used. A simple network with two hidden layers with 16 neurons was able to achieve more than
+                                dataset have been used. A simple network with two hidden layers of 16 neurons each was able to achieve more than
                                 95% accuracy on the test dataset. Although it is possible, in theory, to further improve this result, 
                                 the training process was very long due to the size of the chromosomes. 
                                 <i>It's like searching a needle in a 13000-dimensional haystack.</i>
@@ -296,7 +299,7 @@
                                         </ul>
                                     </li>
                                     <li><code>ui/</code> - user interface implemented using QT</li>
-                                    <li><code>test/</code> - test cases for activation functions with the <code>Catch2</code> framework</li>
+                                    <li><code>test/</code> - test cases for activation functions with the Catch2 framework</li>
                                 </ul>
                             </p>
                         </span>
