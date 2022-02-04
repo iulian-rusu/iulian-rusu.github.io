@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />  
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -134,186 +134,245 @@
                     <div class="divider-custom-icon"><i class="fas fa-code"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Projects Section Content-->
-                <ul class="container">
-                    <li class="lead" id="mregex">
-                        <h3 class="text-primary">
-                            <a href="#mregex" class="text-decoration-none">Metaprogramming-based regular expressions in C++20</a>
-                        </h3>
-                        <span class="medium">
-                            <h4>Overview</h4>
-                            <p>
-                                &emsp; This project involves writing a custom regular expression parser and matcher in C++20.
-                                What makes this approach special is that the engine is capable of compiling the regular expression 
-                                into native C++ code, making it much more efficient than standard runtime-interpreted regular expressions.
-                                It is also possible to use this kind of regex in a <code>constexpr</code> context, allowing for compile-time 
-                                matching in cases where the input is a constant expression.
-                                This is, of course, achieved through heavy <i>template metaprogramming</i>, inspired by other 
-                                similar libraries like <a href="https://github.com/hanickadot/compile-time-regular-expressions">CTRE</a>
-                                or <a href="https://www.boost.org/doc/libs/1_65_1/doc/html/xpressive.html">Boost.Xpressive</a>.
-                                Basically, this approach makes the regular expression a compile-time known data structure.
-                                Instead of creating a <code>std::regex</code> object, which is painfully slow in C++, it is enough to specify
-                                a <i>typedef</i> with the C++ <code>using</code> directive, which will alias a particular regular expression.
-                                For example, one can write <code>using pattern = meta::regex&lt;"ab*"&gt;</code> to generate the code for matching
-                                the regular expression <code>ab*</code>. The generated type contains static methods for performing commong regex 
-                                operations like matching, searching or iterating through a set of results. 
-                            </p>
-                            <div class="my-3 text-info d-flex align-items-center flex-column">
-                                <a class=" btn btn-outline-info disabled" href="https://github.com/iulian-rusu/mregex">
-                                     <i class="fab fa-fw fa-github"></i>
-                                     Private (for now)
-                                 </a>
-                             </div>
-                            <h4>Matching</h4>
-                            <p>
-                                &emsp; Matching is implemented using the backtracking approach, since this algorithm is capable of 
-                                matching complex syntactical structures like backreferences and capturing groups. The actual implementation is 
-                                a bit tricky and uses <i>Continuation-Passing</i> techniques to create the necessary control flow, because
-                                matching certain elements requires a lot of future context (for example, matching <code>(a|ab)+b</code>),
-                                which is difficult to directly implement starting from the <i>Abstract Syntax Tree</i> of the regular expression.
-                                The main difficulty comes from the fact that it is impossible to dynamically allocate memory in a
-                                <code>constexpr</code> function and use it later, at runtime.
-                            </p>
-                            <p>
-                                The matching API supports ranges as well as iterator pairs. Any container which satisfies the 
-                                <code>meta::char_range</code> concept can be matched. That is, it must be a 
-                                <code>std::ranges::forward_range</code> and its value type must be convertible to <code>char32_t</code>.
-                                Matching will return an instance of <code>meta::regex_result</code>, a type which contains information
-                                about whether the match succeeded and the captured content (including capturing groups, if present).
-                                This type is also explicitly convertible to <code>bool</code>.
-                                The library currently supports a lot of the basic PCRE syntax, including
-                                capturing groups, backreferences, sets and lookaheads.
-                            </p>
-                        </span>
-                        <br/>
+                 <!-- Projects Section Navigation -->
+                 <ul class="nav nav-pills mb-5" id="project-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="mregex-tab" data-toggle="pill" href="#mregex" role="tab" aria-controls="mregex" aria-selected="true">
+                          mregex
+                        </a>
                     </li>
-                    <li class="lead" id="discode">
-                        <h3 class="text-primary">
-                            <a href="#discode" class="text-decoration-none">Discode - chatting application with online code execution</a>
-                        </h3>
-                        <span class="medium">
-                            <h4>Overview</h4>
-                            <p>
-                                &emsp; Discode (<i>Discord + code</i>, very original, I know) is a web application that has a Discord-like aesthetic and 
-                                servers as a chatting platform with an integrated online compiler. The application is implemented in a variety
-                                of popular Web technologies and allows the user to send a code snippet directly in the chat message, pick a language
-                                and execute the code online. Multiple languages are supported, including C++, Python, Rust, Kotlin, Java 
-                                and Go. The code execution feature is implemented by calling the 
-                                <a href="https://github.com/compiler-explorer/compiler-explorer">Compiler Explorer</a> API.
-                            </p>
-                            <p>
-                                Other notable things I've learned by working on this team project include:
-                                <ul>
-                                    <li>Designing a distributed Web-service architecture</li>
-                                    <li>Creating a RESTful API for accesing database resources</li>
-                                    <li>Performing authentication and authorization using JWT</li>
-                                    <li>Working with third-party services</li>
-                                    <li>Automatically deploying servers inside Docker containers</li>
-                                    <li>Using Git more efficiently to cooperate with my teammates</li>
-                                </ul>
-                            </p>
-                            <div class="my-3 text-info d-flex align-items-center flex-column">
-                                <a class=" btn btn-outline-info" href="https://github.com/iulian-rusu/discode">
-                                     <i class="fab fa-fw fa-github"></i>
-                                     View on GitHub
-                                 </a>
-                             </div>
-                            <h4>Architecture</h4>
-                            <p>
-                                &emsp; All the servers can be deployed automatically with <code>docker-compose</code> or manually on <code>localhost</code>
-                                by following this <a href="https://github.com/iulian-rusu/discode/tree/main/discode-backend">guide</a>.
-                                There are a total of 4 servers (including the database) and one desktop application written in C++.
-                                However, the desktop app is not essential for experiencing the project's features as it is mainly used for user administration.
-                            </p>
-                            <p>
-                                The complete list of components is as follows:
-                                <ul>
-                                    <li><b class="text-info fw-bold">MySQL</b> database server, running on port <code>3435</code> (in Docker) or <code>3306</code> (locally)</li>
-                                    <li><b class="text-info fw-bold">Spring Boot</b> backend server on port <code>8008</code> written in Kotlin</li>
-                                    <li><b class="text-info fw-bold">Node.js</b> server on port <code>8010</code> that uses WebSockets to notify users</li>
-                                    <li><b class="text-info fw-bold">Angular</b> application served by Nginx on port <code>4200</code> which is the main web frontend</li>
-                                    <li><b class="text-info fw-bold">QT</b> desktop application written in C++ that is used for administration</li>
-                                </ul>
-                            </p>
-                        </span>
-                        <br/>
+                    <li class="nav-item">
+                        <a class="nav-link" id="discode-tab" data-toggle="pill" 
+                            href="#discode" role="tab" aria-controls="discode" aria-selected="false">
+                          Discode
+                        </a>
                     </li>
-                    <li class="lead" id="gnnt">
-                        <h3 class="text-primary">
-                            <a href="#gnnt" class="text-decoration-none">Genetic Neural Network Trainer</a>
-                        </h3>
-                        <span class="medium">
-                            <h4>Overview</h4>
-                            <p>
-                                &emsp; This is an educational project aimed at understanding how neural networks work on a low level, as 
-                                well as implementing a Genetic Algorithm for training a Multilayer-Perceptron neural network. The project
-                                is implemented in C++ and provides a small library abbreviated as <code>gnnt</code>. It contains a custom
-                                implementation of a neural network, including activation functions, utilities for dataset manipulation and 
-                                training metrics.
-                                The neural network architecture is defined at compile-time for optimization purposes, using templates to 
-                                specify the layers with their respective activation functions. The library was designed with genericity
-                                and efficiency in mind, supporting custom underlying data types instead of <code>float</code> or <code>double</code>.
-                                The implementation supports a variable number of hidden layers, each being specified as a template argument using
-                                the <code>gnnt::mlp::layer</code> class template. This has several performance advantages, like the ability of the 
-                                compiler to better optimize the code, not needing to dynamically allocate memory at runtime and the possibility to
-                                implement forward propagation using a <i>fold-expression</i> (see the <code>fold()</code> method 
-                                <a href="https://github.com/iulian-rusu/genetic-nn-trainer/blob/main/gnnt/gnnt/mlp/network.hpp">here</a>).
-                            </p>
-                            <p>
-                                The main focus of the project was specifically on using a Genetic Algorithm to train the network. That is, each
-                                chromosome was represented by the weights and biases of the network, other parameters being taken as constants.
-                                As an example of a practical application, the project provides a desktop interface written in QT which uses the 
-                                library to train a network. The graphical interface provides a 28x28 canvas where the user can draw grayscale images. 
-                                The ultimate goal is, of course, to recognize the digits drawn using the trained neural network.
-                            </p>
-                            <div class="my-3 text-info d-flex align-items-center flex-column">
-                                <a class=" btn btn-outline-info" href="https://github.com/iulian-rusu/genetic-nn-trainer">
-                                     <i class="fab fa-fw fa-github"></i>
-                                     View on GitHub
-                                 </a>
-                             </div>
-                            <h4>Digit Recognition</h4>
-                            <p>
-                                &emsp; To train the network, the handwritten digits from the <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a>
-                                dataset have been used. A simple network with two hidden layers of 16 neurons each was able to achieve more than
-                                95% accuracy on the test dataset. Although it is possible, in theory, to further improve this result, 
-                                the training process was very long due to the size of the chromosomes. 
-                                <i>It's like searching a needle in a 13000-dimensional haystack.</i>
-                            </p>
-                            <p>
-                                The full source code, as well as the used dataset and serialized models, can be found on GitHub 
-                                and has the following project structure:
-                                <ul>
-                                    <li>
-                                        <code>data/</code> - various data used for testing
-                                        <ul>
-                                            <li><code>data/mnist/</code> - dataset for handwritten digit recognition</li>
-                                            <li><code>data/models/</code> - models saved after training</li>
-                                        </ul>
-                                    </li>
-                                    <li><code>gnnt/</code> - main library implementation
-                                        <ul>
-                                            <li><code>gnnt/gnnt/mlp/</code> - compile-time Multilayer Perceptron network</li>
-                                            <li><code>gnnt/gnnt/training/</code>- genetic algorithm implementation</li>
-                                        </ul>
-                                    </li>
-                                    <li><code>ui/</code> - user interface implemented using QT</li>
-                                    <li><code>test/</code> - test cases for activation functions with the Catch2 framework</li>
-                                </ul>
-                            </p>
-                        </span>
+                    <li class="nav-item">
+                        <a class="nav-link" id="gnnt-tab" data-toggle="pill" 
+                            href="#gnnt" role="tab" aria-controls="gnnt" aria-selected="false">
+                          GNNT
+                        </a>
                     </li>
                 </ul>
+                <!-- Projects Section Content-->
+                <div class="container">
+                    <div class="tab-content" id="project-tab-content">
+                        <div class="lead tab-pane fade show active" id="mregex" role="tabpanel" aria-labelledby="mregex-tab">
+                            <h3 class="text-primary">
+                                mregex - Metaprogramming-Based Regular Expressions
+                            </h3>
+                            <span class="medium">
+                                <h4>Overview</h4>
+                                <p>
+                                    &emsp; This project involves writing a custom regular expression engine in C++20.
+                                    What makes this approach special is that the engine is capable of compiling the regular expression 
+                                    into native C++ code, making it much more efficient than standard runtime-interpreted regular expressions.
+                                    It is also possible to use this kind of regex in a <code>constexpr</code> context, allowing for compile-time 
+                                    matching in cases where the input is a constant expression.
+                                    This is, of course, achieved through heavy <i>template metaprogramming</i>, inspired by other 
+                                    similar libraries like <a href="https://github.com/hanickadot/compile-time-regular-expressions">CTRE</a>
+                                    or <a href="https://www.boost.org/doc/libs/1_65_1/doc/html/xpressive.html">Boost.Xpressive</a>.
+                                    Basically, this approach makes the regular expression a compile-time known data structure.
+                                    Instead of creating a <code>std::regex</code> object, which is painfully slow in C++, it is enough to specify
+                                    a <i>typedef</i> with the C++ <code>using</code> directive, which will alias a particular regular expression.
+                                    For example, one can write <code>using pattern = meta::regex&lt;"ab*"&gt;</code> to generate the code for matching
+                                    the regular expression <code>ab*</code>. The generated type contains static methods for performing commong regex 
+                                    operations like matching, searching or iterating through a set of results. 
+                                </p>
+                                <div class="my-3 text-info d-flex align-items-center flex-column">
+                                    <a class=" btn btn-outline-info disabled" href="https://github.com/iulian-rusu/mregex">
+                                            <i class="fab fa-fw fa-github"></i>
+                                            Private (for now)
+                                        </a>
+                                    </div>
+                                <h4>Matching</h4>
+                                <p>
+                                    &emsp; Matching is implemented using the backtracking approach, since this algorithm is capable of 
+                                    matching complex syntactical structures like backreferences and capturing groups. The actual implementation is 
+                                    a bit tricky and uses <i>Continuation-Passing</i> techniques to create the necessary control flow, because
+                                    matching certain elements requires a lot of future context (for example, matching <code>(a|ab)+b</code>),
+                                    which is difficult to directly implement starting from the <i>Abstract Syntax Tree</i> of the regular expression.
+                                    The main difficulty comes from the fact that it is impossible to dynamically allocate memory in a
+                                    <code>constexpr</code> function and use it later, at runtime.
+                                </p>
+                                <p>
+                                    The matching API supports ranges as well as iterator pairs. Any container which satisfies the 
+                                    <code>meta::char_range</code> concept can be matched. That is, it must be a 
+                                    <code>std::ranges::forward_range</code> and its value type must be convertible to <code>char32_t</code>.
+                                    Matching will return an instance of <code>meta::regex_result</code>, a type which contains information
+                                    about whether the match succeeded and the captured content (including capturing groups, if present).
+                                    This type is also explicitly convertible to <code>bool</code>.
+                                </p>
+                                <p>
+                                    The library supports a large portion of the standard PCRE syntax, including
+                                    features like:
+                                    <ul>
+                                        <li>
+                                            Quantifiers - <code>*</code>, <code>?</code>, <code>{3,6}</code>, <code>{5,}</code>
+                                        </li>
+                                        <li>
+                                            Capturing subexpressions - <code>(expr)</code>
+                                        </li>
+                                        <li>
+                                            Non-capturing subexpressions - <code>(?:expr)</code>
+                                        </li>
+                                        <li>
+                                            Lookaheads - <code>(?=expr)</code>, <code>(?!expr)</code>
+                                        </li>
+                                        <li>
+                                           Backreferences - <code>\12</code>
+                                        </li>
+                                        <li>
+                                            Alternations - <code>|</code>
+                                        </li>
+                                        <li>
+                                            Special character classes - <code>\w</code>, <code>\S</code>
+                                        </li>
+                                        <li>
+                                            Anchors - <code>^</code>, <code>$</code>
+                                        </li>
+                                        <li>
+                                            Sets - <code>[abc]</code>, <code>[^ABC]</code>, <code>[a-z0-9]</code>
+                                        </li>
+                                        <li>
+                                            Standard flags like <code>icase</code> or <code>multiline</code>
+                                        </li>
+                                    </ul>
+                                </p>
+                            </span>
+                            <br/>
+                        </div>
+                        <div class="lead tab-pane fade" id="discode" role="tabpanel" aria-labelledby="discode-tab">
+                            <h3 class="text-primary">
+                                Discode - Chatting Application With Online Code Execution
+                            </h3>
+                            <span class="medium">
+                                <h4>Overview</h4>
+                                <p>
+                                    &emsp; Discode (<i>Discord + code</i>, very original, I know) is a web application that has a Discord-like aesthetic and 
+                                    servers as a chatting platform with an integrated online compiler. The application is implemented in a variety
+                                    of popular Web technologies and allows the user to send a code snippet directly in the chat message, pick a language
+                                    and execute the code online. Multiple languages are supported, including C++, Python, Rust, Kotlin, Java 
+                                    and Go. The code execution feature is implemented by calling the 
+                                    <a href="https://github.com/compiler-explorer/compiler-explorer">Compiler Explorer</a> API.
+                                </p>
+                                <p>
+                                    Other notable things I've learned by working on this team project include:
+                                    <ul>
+                                        <li>Designing a distributed Web-service architecture</li>
+                                        <li>Creating a RESTful API for accesing database resources</li>
+                                        <li>Performing authentication and authorization using JWT</li>
+                                        <li>Working with third-party services</li>
+                                        <li>Automatically deploying servers inside Docker containers</li>
+                                        <li>Using Git more efficiently to cooperate with my teammates</li>
+                                    </ul>
+                                </p>
+                                <div class="my-3 text-info d-flex align-items-center flex-column">
+                                    <a class=" btn btn-outline-info" href="https://github.com/iulian-rusu/discode">
+                                         <i class="fab fa-fw fa-github"></i>
+                                         View on GitHub
+                                     </a>
+                                 </div>
+                                <h4>Architecture</h4>
+                                <p>
+                                    &emsp; All the servers can be deployed automatically with <code>docker-compose</code> or manually on <code>localhost</code>
+                                    by following this <a href="https://github.com/iulian-rusu/discode/tree/main/discode-backend">guide</a>.
+                                    There are a total of 4 servers (including the database) and one desktop application written in C++.
+                                    However, the desktop app is not essential for experiencing the project's features as it is mainly used for user administration.
+                                </p>
+                                <p>
+                                    The complete list of components is as follows:
+                                    <ul>
+                                        <li><b class="text-info fw-bold">MySQL</b> database server, running on port <code>3435</code> (in Docker) or <code>3306</code> (locally)</li>
+                                        <li><b class="text-info fw-bold">Spring Boot</b> backend server on port <code>8008</code> written in Kotlin</li>
+                                        <li><b class="text-info fw-bold">Node.js</b> server on port <code>8010</code> that uses WebSockets to notify users</li>
+                                        <li><b class="text-info fw-bold">Angular</b> application served by Nginx on port <code>4200</code> which is the main web frontend</li>
+                                        <li><b class="text-info fw-bold">QT</b> desktop application written in C++ that is used for administration</li>
+                                    </ul>
+                                </p>
+                            </span>
+                            <br/>
+                        </div>
+                        <div class="lead tab-pane fade" id="gnnt" role="tabpanel" aria-labelledby="gnnt-tab">
+                            <h3 class="text-primary">
+                                Genetic Neural Network Trainer
+                            </h3>
+                            <span class="medium">
+                                <h4>Overview</h4>
+                                <p>
+                                    &emsp; This is an educational project aimed at understanding how neural networks work on a low level, as 
+                                    well as implementing a Genetic Algorithm for training a Multilayer-Perceptron neural network. The project
+                                    is implemented in C++ and provides a small library abbreviated as <code>gnnt</code>. It contains a custom
+                                    implementation of a neural network, including activation functions, utilities for dataset manipulation and 
+                                    training metrics.
+                                    The neural network architecture is defined at compile-time for optimization purposes, using templates to 
+                                    specify the layers with their respective activation functions. The library was designed with genericity
+                                    and efficiency in mind, supporting custom underlying data types instead of <code>float</code> or <code>double</code>.
+                                    The implementation supports a variable number of hidden layers, each being specified as a template argument using
+                                    the <code>gnnt::mlp::layer</code> class template. This has several performance advantages, like the ability of the 
+                                    compiler to better optimize the code, not needing to dynamically allocate memory at runtime and the possibility to
+                                    implement forward propagation using a <i>fold-expression</i> (see the <code>fold()</code> method 
+                                    <a href="https://github.com/iulian-rusu/genetic-nn-trainer/blob/main/gnnt/gnnt/mlp/network.hpp">here</a>).
+                                </p>
+                                <p>
+                                    The main focus of the project was specifically on using a Genetic Algorithm to train the network. That is, each
+                                    chromosome was represented by the weights and biases of the network, other parameters being taken as constants.
+                                    As an example of a practical application, the project provides a desktop interface written in QT which uses the 
+                                    library to train a network. The graphical interface provides a 28x28 canvas where the user can draw grayscale images. 
+                                    The ultimate goal is, of course, to recognize the digits drawn using the trained neural network.
+                                </p>
+                                <div class="my-3 text-info d-flex align-items-center flex-column">
+                                    <a class=" btn btn-outline-info" href="https://github.com/iulian-rusu/genetic-nn-trainer">
+                                         <i class="fab fa-fw fa-github"></i>
+                                         View on GitHub
+                                     </a>
+                                 </div>
+                                <h4>Digit Recognition</h4>
+                                <p>
+                                    &emsp; The network was trained on the handwritten digits from the <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a>
+                                    dataset. A simple architecture with two hidden layers of 16 neurons each was able to achieve more than
+                                    95% accuracy on the test dataset. Although it is possible, in theory, to further improve this result, 
+                                    the training process was very long due to the size of the chromosomes. 
+                                    <i>It's like searching a needle in a 13000-dimensional haystack.</i>
+                                </p>
+                                <p>
+                                    The full source code, as well as the used dataset and serialized models, can be found on GitHub 
+                                    and has the following project structure:
+                                    <ul>
+                                        <li>
+                                            <code>data/</code> - various data used for testing
+                                            <ul>
+                                                <li><code>data/mnist/</code> - dataset for handwritten digit recognition</li>
+                                                <li><code>data/models/</code> - models saved after training</li>
+                                            </ul>
+                                        </li>
+                                        <li><code>gnnt/</code> - main library implementation
+                                            <ul>
+                                                <li><code>gnnt/gnnt/mlp/</code> - compile-time Multilayer Perceptron network</li>
+                                                <li><code>gnnt/gnnt/training/</code>- genetic algorithm implementation</li>
+                                            </ul>
+                                        </li>
+                                        <li><code>ui/</code> - user interface implemented using QT</li>
+                                        <li><code>test/</code> - test cases for activation functions with the Catch2 framework</li>
+                                    </ul>
+                                </p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
             <div class="container">Copyright &copy; 2022 Iulian Rusu</div>
         </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
