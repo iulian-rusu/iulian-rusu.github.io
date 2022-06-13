@@ -180,9 +180,9 @@
                                     operations like matching, searching or iterating through a set of results. 
                                 </p>
                                 <div class="my-3 text-info d-flex align-items-center flex-column">
-                                    <a class=" btn btn-outline-info disabled" href="https://github.com/iulian-rusu/mregex">
+                                    <a class=" btn btn-outline-info" href="https://github.com/iulian-rusu/mregex">
                                             <i class="fab fa-fw fa-github"></i>
-                                            Private (for now)
+                                            View on GitHub
                                         </a>
                                     </div>
                                 <h4>Matching</h4>
@@ -312,7 +312,7 @@
                                     the <code>gnnt::mlp::layer</code> class template. This has several performance advantages, like the ability of the 
                                     compiler to better optimize the code, not needing to dynamically allocate memory at runtime and the possibility to
                                     implement forward propagation using a <i>fold-expression</i> (see the <code>fold()</code> method 
-                                    <a href="https://github.com/iulian-rusu/genetic-nn-trainer/blob/main/gnnt/gnnt/mlp/network.hpp">here</a>).
+                                    <a href="https://github.com/iulian-rusu/genetic-nn-trainer/blob/main/include/gnnt/mlp/network.hpp">here</a>).
                                 </p>
                                 <p>
                                     The main focus of the project was specifically on using a Genetic Algorithm to train the network. That is, each
@@ -341,18 +341,18 @@
                                     <ul>
                                         <li>
                                             <code>data/</code> - various data used for testing
-                                            <ul>
+                                            <ul type="square">
                                                 <li><code>data/mnist/</code> - dataset for handwritten digit recognition</li>
                                                 <li><code>data/models/</code> - models saved after training</li>
                                             </ul>
                                         </li>
-                                        <li><code>gnnt/</code> - main library implementation
-                                            <ul>
-                                                <li><code>gnnt/gnnt/mlp/</code> - compile-time Multilayer Perceptron network</li>
-                                                <li><code>gnnt/gnnt/training/</code>- genetic algorithm implementation</li>
+                                        <li><code>gui/</code> - graphical user interface implemented using QT</li>
+                                        <li><code>include/</code> - main library implementation
+                                            <ul type="square">
+                                                <li><code>include/gnnt/mlp/</code> - compile-time Multilayer Perceptron network</li>
+                                                <li><code>include/gnnt/training/</code>- genetic algorithm implementation</li>
                                             </ul>
                                         </li>
-                                        <li><code>ui/</code> - user interface implemented using QT</li>
                                         <li><code>test/</code> - test cases for activation functions with the Catch2 framework</li>
                                     </ul>
                                 </p>

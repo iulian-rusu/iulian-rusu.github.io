@@ -26,7 +26,8 @@
   --bs-gray: #6c757d;
   --bs-gray-dark: #343a40;
   --bs-primary: #1abc9c;
-  --bs-secondary: #2c3e50;
+  --bs-secondary: #34495e;
+  --bs-codebg: #2c3d53;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
@@ -251,8 +252,9 @@ pre code {
 code {
   font-size: 0.875em;
   color: var(--bs-light);
-  background-color: var(--bs-gray);
-  padding: 0.1em 0.3em;
+  background-color: var(--bs-codebg);
+  padding: 0.12em 0.3em;
+  margin: 0 0.1em;
   border-radius: 0.25em;
   word-wrap: break-word;
 }
