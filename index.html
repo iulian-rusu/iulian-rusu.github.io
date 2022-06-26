@@ -173,10 +173,10 @@
                                     similar libraries like <a href="https://github.com/hanickadot/compile-time-regular-expressions">CTRE</a>
                                     or <a href="https://www.boost.org/doc/libs/1_65_1/doc/html/xpressive.html">Boost.Xpressive</a>.
                                     Basically, this approach makes the regular expression a compile-time known data structure.
-                                    Instead of creating a <code>std::regex</code> object, which is painfully slow in C++, it is enough to specify
-                                    a <i>typedef</i> with the C++ <code>using</code> directive, which will alias a particular regular expression.
-                                    For example, one can write <code>using pattern = meta::regex&lt;"ab*"&gt;</code> to generate the code for matching
-                                    the regular expression <code>ab*</code>. The generated type contains static methods for performing commong regex 
+                                    Instead of creating a <code>std::regex</code> object, which is extremely slow and results in horrible machine code,
+                                    this library allows mapping a regular expression to a native C++ type.
+                                    For example, one can write <code>using pattern = meta::regex&lt;"ab*"&gt;</code> to compile the regular expression 
+                                    <code>ab*</code> into a C++ type. The generated type contains static methods for performing common regex 
                                     operations like matching, searching or iterating through a set of results. 
                                 </p>
                                 <div class="my-3 text-info d-flex align-items-center flex-column">
@@ -190,10 +190,8 @@
                                     &emsp; Matching is implemented using the backtracking approach, since this algorithm is capable of 
                                     matching complex syntactical structures like backreferences and capturing groups. The actual implementation is 
                                     a bit tricky and uses <i>Continuation-Passing</i> techniques to create the necessary control flow, because
-                                    matching certain elements requires a lot of future context (for example, matching <code>(a|ab)+b</code>),
+                                    matching certain elements requires a lot of future context (for example, matching <code>(a|ab)+</code>),
                                     which is difficult to directly implement starting from the <i>Abstract Syntax Tree</i> of the regular expression.
-                                    The main difficulty comes from the fact that it is impossible to dynamically allocate memory in a
-                                    <code>constexpr</code> function and use it later, at runtime.
                                 </p>
                                 <p>
                                     The matching API supports ranges as well as iterator pairs. Any container which satisfies the 
@@ -208,16 +206,19 @@
                                     features like:
                                     <ul>
                                         <li>
-                                            Quantifiers - <code>*</code>, <code>?</code>, <code>{3,6}</code>, <code>{5,}</code>
+                                            Quantifiers - <code>*</code>, <code>+</code>,  <code>?</code>, <code>{3,6}</code>, <code>{5,}</code>
                                         </li>
                                         <li>
-                                            Capturing subexpressions - <code>(expr)</code>
+                                            Capturing groups - <code>(expr)</code>
                                         </li>
                                         <li>
-                                            Non-capturing subexpressions - <code>(?:expr)</code>
+                                            Non-capturing groups - <code>(?:expr)</code>
                                         </li>
                                         <li>
                                             Lookaheads - <code>(?=expr)</code>, <code>(?!expr)</code>
+                                        </li>
+                                        <li>
+                                            Lookbehinds- <code>(?<=expr)</code>, <code>(?&lt;!expr)</code>
                                         </li>
                                         <li>
                                            Backreferences - <code>\12</code>
@@ -235,7 +236,7 @@
                                             Sets - <code>[abc]</code>, <code>[^ABC]</code>, <code>[a-z0-9]</code>
                                         </li>
                                         <li>
-                                            Standard flags like <code>icase</code> or <code>multiline</code>
+                                            Flags like <code>icase</code> or <code>multiline</code>
                                         </li>
                                     </ul>
                                 </p>
@@ -249,11 +250,7 @@
                             <span class="medium">
                                 <h4>Overview</h4>
                                 <p>
-                                    &emsp; Discode (<i>Discord + code</i>, very original, I know) is a web application that has a Discord-like aesthetic and 
-                                    servers as a chatting platform with an integrated online compiler. The application is implemented in a variety
-                                    of popular Web technologies and allows the user to send a code snippet directly in the chat message, pick a language
-                                    and execute the code online. Multiple languages are supported, including C++, Python, Rust, Kotlin, Java 
-                                    and Go. The code execution feature is implemented by calling the 
+                                    &emsp; Discode is a web application that has a Discord-like aesthetic (hence its name) and serves both as a chatting platform and as an online code execution engine (hence its name). The application is implemented using a variety of popular Web technologies and allows the user to send a code snippet directly in the chat message, pick a language and run the code online. Multiple languages are supported, including C++, Python, Rust, Kotlin, Java and Go. The code execution feature is implemented by calling the 
                                     <a href="https://github.com/compiler-explorer/compiler-explorer">Compiler Explorer</a> API.
                                 </p>
                                 <p>
@@ -300,18 +297,16 @@
                             <span class="medium">
                                 <h4>Overview</h4>
                                 <p>
-                                    &emsp; This is an educational project aimed at understanding how neural networks work on a low level, as 
+                                    &emsp; This is an educational project aimed at understanding how neural networks work at a low level, as 
                                     well as implementing a Genetic Algorithm for training a Multilayer-Perceptron neural network. The project
                                     is implemented in C++ and provides a small library abbreviated as <code>gnnt</code>. It contains a custom
                                     implementation of a neural network, including activation functions, utilities for dataset manipulation and 
                                     training metrics.
                                     The neural network architecture is defined at compile-time for optimization purposes, using templates to 
                                     specify the layers with their respective activation functions. The library was designed with genericity
-                                    and efficiency in mind, supporting custom underlying data types instead of <code>float</code> or <code>double</code>.
-                                    The implementation supports a variable number of hidden layers, each being specified as a template argument using
-                                    the <code>gnnt::mlp::layer</code> class template. This has several performance advantages, like the ability of the 
-                                    compiler to better optimize the code, not needing to dynamically allocate memory at runtime and the possibility to
-                                    implement forward propagation using a <i>fold-expression</i> (see the <code>fold()</code> method 
+                                    and efficiency in mind, supporting custom underlying data types and a variable number of hidden layers, each being 
+                                    specified as a template argument using the <code>gnnt::mlp::layer</code> class template. This has several performance 
+                                    advantages, like better compiler optimizations, avoiding dynamic memory allocations at runtime and the possibility to implement forward propagation using a <i>fold-expression</i> (see the <code>fold()</code> method 
                                     <a href="https://github.com/iulian-rusu/genetic-nn-trainer/blob/main/include/gnnt/mlp/network.hpp">here</a>).
                                 </p>
                                 <p>
@@ -332,8 +327,7 @@
                                     &emsp; The network was trained on the handwritten digits from the <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a>
                                     dataset. A simple architecture with two hidden layers of 16 neurons each was able to achieve more than
                                     95% accuracy on the test dataset. Although it is possible, in theory, to further improve this result, 
-                                    the training process was very long due to the size of the chromosomes. 
-                                    <i>It's like searching a needle in a 13000-dimensional haystack.</i>
+                                    the training process was very long due to the size of the chromosomes.
                                 </p>
                                 <p>
                                     The full source code, as well as the used dataset and serialized models, can be found on GitHub 
