@@ -226,8 +226,6 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
   text-decoration: none;
 }
 
-pre,
-code,
 kbd,
 samp {
   font-family: var(--bs-font-monospace);
@@ -236,31 +234,15 @@ samp {
   unicode-bidi: bidi-override;
 }
 
-pre {
-  display: block;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  overflow: auto;
-  font-size: 0.875em;
-}
-pre code {
-  font-size: inherit;
-  color: inherit;
-  word-break: normal;
-}
-
-code {
-  font-size: 0.875em;
-  color: var(--bs-light);
-  background-color: var(--bs-codebg);
+code, pre>code {
+  font-size: 0.875em !important;
+  font-family: var(--bs-font-monospace) !important;
   padding: 0.12em 0.3em;
   margin: 0 0.1em;
   border-radius: 0.25em;
-  word-wrap: break-word;
 }
-a > code {
-  color: inherit;
-}
+
+p code { display: inline; }
 
 kbd {
   padding: 0.2rem 0.4rem;
