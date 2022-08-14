@@ -223,7 +223,7 @@
                                     href="https://www.boost.org/doc/libs/1_65_1/doc/html/xpressive.html">Boost.Xpressive</a>.
                                 Basically, this approach makes the regular expression a compile-time known data
                                 structure.
-                                Instead of creating a <code>std::regex</code> object, which is extremely slow and
+                                Instead of creating a <code class="language-cpp">std::regex</code> object, which is extremely slow and
                                 results in horrible machine code,
                                 this library allows mapping a regular expression to a native C++ type.
                                 For example, one can write <code
@@ -271,10 +271,10 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
                             <p>
                                 The matching API supports ranges as well as iterator pairs. Any container which
                                 satisfies the
-                                <code>meta::char_range</code> concept can be matched. That is, it must be a
-                                <code>std::ranges::forward_range</code> and its value type must be convertible to
+                                <code class="language-cpp">meta::char_range</code> concept can be matched. That is, it must be a
+                                <code class="language-cpp">std::ranges::forward_range</code> and its value type must be convertible to
                                 <code>char32_t</code>.
-                                Matching will return an instance of <code>meta::regex_result</code>, a type which
+                                Matching will return an instance of <code class="language-cpp">meta::regex_result</code>, a type which
                                 contains information
                                 about whether the match succeeded and the captured content (including capturing groups,
                                 if present).
@@ -417,13 +417,13 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
                                 with genericity
                                 and efficiency in mind, supporting custom underlying data types and a variable number of
                                 hidden layers, each being
-                                specified as a template argument using the <code>gnnt::mlp::layer</code> class template.
+                                specified as a template argument using the <code class="language-cpp">gnnt::mlp::layer</code> class template.
                                 This has several performance
                                 advantages, like better compiler optimizations, avoiding dynamic memory allocations at
                                 runtime and the possibility to implement forward propagation using a
-                                <i>fold-expression</i> (see the <code>fold()</code> method
+                                <i>fold-expression</i> (see the <code class="language-cpp">fold()</code> method
                                 <a
-                                    href="https://github.com/iulian-rusu/genetic-nn-trainer/blob/main/include/gnnt/mlp/network.hpp">here</a>).
+                                    href="https://github.com/iulian-rusu/genetic-nn-trainer/blob/main/include/gnnt/mlp/network.hpp">here</a>.
                             </p>
                             <p>
                                 The main focus of the project was specifically on using a Genetic Algorithm to train the
