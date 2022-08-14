@@ -226,11 +226,13 @@
                                 Instead of creating a <code>std::regex</code> object, which is extremely slow and
                                 results in horrible machine code,
                                 this library allows mapping a regular expression to a native C++ type.
-                                For example, one can write <code>using pattern = meta::regex&lt;"ab*"&gt;</code> to
+                                For example, one can write <code
+                                    class="language-cpp">using pattern = meta::regex&lt;"ab*"&gt;</code> to
                                 compile the regular expression
                                 <code>ab*</code> into a C++ type. The generated type contains static methods for
-                                performing common regex
-                                operations like matching, searching or iterating through a set of results.
+                                performing common regex operations like matching, searching or iterating through a set
+                                of results.
+
                             </p>
                             <div class="my-3 text-info d-flex align-items-center flex-column">
                                 <a class=" btn btn-outline-info" href="https://github.com/iulian-rusu/mregex">
@@ -238,6 +240,20 @@
                                     View on GitHub
                                 </a>
                             </div>
+
+                            <h4>Expression-based API</h4>
+                            <p>
+                                The library allows defining a regular expression as a composition of C++ expressions
+                                (similar to <a
+                                    href="https://www.boost.org/doc/libs/1_65_1/doc/html/xpressive.html">Boost.Xpressive</a>).
+                                This way, a more complex pattern can be composed from smaller individual patterns.
+                                Below is an example of creating the regex <code class="language-plaintext">(?:\d+[-/.]){2}\d+</code>
+                                using this API:
+                            <pre class="code-block"><code class="language-cpp">// All expression-based API components are in the namespace 'xpr'
+auto digits = +xpr::digit;      // Matches one or more digits
+auto sep = xpr::regex<"[-/.]">; // Matches '-', '/' or '.'
+auto date = xpr::exactly<2>(digits, sep) >> digits;</code></pre>
+                            </p>
                             <h4>Matching</h4>
                             <p>
                                 &emsp; Matching is implemented using the backtracking approach, since this algorithm is
@@ -268,11 +284,13 @@
                                 features like:
                             <ul>
                                 <li>
-                                    Quantifiers - <code>*</code>, <code class="language-plaintext">+</code>, <code>?</code>, <code class="language-cpp">{3,6}</code>,
+                                    Quantifiers - <code>*</code>, <code class="language-plaintext">+</code>,
+                                    <code>?</code>, <code class="language-cpp">{3,6}</code>,
                                     <code class="language-cpp">{5,}</code>
                                 </li>
                                 <li>
-                                    Capturing groups - <code>(expr)</code>, <code class="language-html">(?&lt;name&gt;expr)</code>
+                                    Capturing groups - <code>(expr)</code>, <code
+                                        class="language-html">(?&lt;name&gt;expr)</code>
                                 </li>
                                 <li>
                                     Non-capturing groups - <code>(?:expr)</code>
