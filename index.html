@@ -18,7 +18,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <!-- Highlight JS -->
-    <link rel="stylesheet" href="vendor/highlight-js/styles/base16/material-palenight.min.css">
+    <link rel="stylesheet" href="css/code-theme-custom.css">
 </head>
 
 <body id="page-top">
@@ -247,12 +247,13 @@
                                 (similar to <a
                                     href="https://www.boost.org/doc/libs/1_65_1/doc/html/xpressive.html">Boost.Xpressive</a>).
                                 This way, a more complex pattern can be composed from smaller individual patterns.
-                                Below is an example of creating the regex <code class="language-plaintext">(?:\d+[-/.]){2}\d+</code>
+                                Below is an example of creating the regex <code
+                                    class="language-plaintext">(?:\d+[-/.]){2}\d+</code>
                                 using this API:
                             <pre class="code-block"><code class="language-cpp">// All expression-based API components are in the namespace 'xpr'
 auto digits = +xpr::digit;      // Matches one or more digits
-auto sep = xpr::regex<"[-/.]">; // Matches '-', '/' or '.'
-auto date = xpr::exactly<2>(digits, sep) >> digits;</code></pre>
+auto sep = xpr::regex&lt;"[-/.]">; // Matches '-', '/' or '.'
+auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
                             </p>
                             <h4>Matching</h4>
                             <p>
@@ -277,44 +278,51 @@ auto date = xpr::exactly<2>(digits, sep) >> digits;</code></pre>
                                 contains information
                                 about whether the match succeeded and the captured content (including capturing groups,
                                 if present).
-                                This type is also explicitly convertible to <code>bool</code>.
+                                This type is also explicitly convertible to <code class="language-cpp">bool</code>.
                             </p>
                             <p>
                                 The library supports a large portion of the standard PCRE syntax, including
                                 features like:
                             <ul>
                                 <li>
-                                    Quantifiers - <code>*</code>, <code class="language-plaintext">+</code>,
-                                    <code>?</code>, <code class="language-cpp">{3,6}</code>,
-                                    <code class="language-cpp">{5,}</code>
+                                    Quantifiers - <code class="language-plaintext">*</code>, <code
+                                        class="language-plaintext">+</code>,
+                                    <code class="language-plaintext">?</code>, <code class="language-plaintext">{3,6}</code>,
+                                    <code class="language-plaintext">{5,}</code>
                                 </li>
                                 <li>
-                                    Capturing groups - <code>(expr)</code>, <code
-                                        class="language-html">(?&lt;name&gt;expr)</code>
+                                    Capturing groups - <code class="language-plaintext">(expr)</code>, <code
+                                        class="language-plaintext">(?&lt;name&gt;expr)</code>
                                 </li>
                                 <li>
-                                    Non-capturing groups - <code>(?:expr)</code>
+                                    Non-capturing groups - <code class="language-plaintext">(?:expr)</code>
                                 </li>
                                 <li>
-                                    Lookaheads - <code>(?=expr)</code>, <code>(?!expr)</code>
+                                    Lookaheads - <code class="language-plaintext">(?=expr)</code>, <code
+                                        class="language-plaintext">(?!expr)</code>
                                 </li>
                                 <li>
-                                    Lookbehinds- <code>(?<=expr)</code>, <code>(?&lt;!expr)</code>
+                                    Lookbehinds- <code class="language-plaintext">(?<=expr)</code>, <code
+                                        class="language-plaintext">(?&lt;!expr)</code>
                                 </li>
                                 <li>
-                                    Backreferences - <code>\12</code>, <code>\k&lt;name&gt;</code>
+                                    Backreferences - <code class="language-plaintext">\12</code>, <code
+                                        class="language-plaintext">\k&lt;name&gt;</code>
                                 </li>
                                 <li>
-                                    Alternations - <code>|</code>
+                                    Alternations - <code class="language-plaintext">|</code>
                                 </li>
                                 <li>
-                                    Special character classes - <code>\w</code>, <code>\d</code>, <code>\S</code>
+                                    Special character classes - <code class="language-plaintext">\w</code>, <code
+                                        class="language-plaintext">\d</code class="language-plaintext">, <code>\S</code>
                                 </li>
                                 <li>
-                                    Anchors - <code>^</code>, <code>$</code>, <code>\b</code>
+                                    Anchors - <code class="language-plaintext">^</code>, <code class="language-plaintext">$</code>,
+                                    <code class="language-plaintext">\b</code>
                                 </li>
                                 <li>
-                                    Sets - <code>[abc]</code>, <code>[^ABC]</code>, <code>[a-z0-9]</code>
+                                    Sets - <code class="language-plaintext">[abc]</code>, <code
+                                        class="language-plaintext">[^ABC]</code>, <code class="language-plaintext">[a-z0-9]</code>
                                 </li>
                                 <li>
                                     Flags like <code>icase</code> or <code>multiline</code>
