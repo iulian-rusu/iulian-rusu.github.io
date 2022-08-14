@@ -49,7 +49,7 @@
     <div class="page-section masthead bg-primary text-white mb-0">
         <div class="container d-flex align-items-center flex-column">
             <div class="lead">
-                <h3>Hello, I'm <span class="text-info">Iulian</span>. Welcome to my personal page!</h3>
+                <h3>Hello, I'm Iulian</>. Welcome to my personal page!</h3>
                 <br />
                 <h5>You might enjoy some of my projects on <a href="https://github.com/iulian-rusu">GitHub</a>,
                     including:</h5>
@@ -69,12 +69,19 @@
                             template metaprogramming.</li>
                     </ul>
                 </span>
-                <h5>More information available in the <a href="#about">About</a> section.</h5>
+                <br />
+                <!-- About Section Button-->
+                <div class="text-center mt-4">
+                    <a class="btn btn-xl btn-outline-primary" href="#about">
+                        <i class="fa fa-arrow-down"></i>
+                        &nbsp;About Me
+                    </a>
+                </div>
             </div>
         </div>
     </div>
     <!-- About Section-->
-    <div class="page-section bg-purple text-white mb-0" id="about">
+    <div class="page-section bg-primary text-white mb-0" id="about">
         <div class="container">
             <!-- About Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-white">About Me</h2>
@@ -108,8 +115,7 @@
                 </div>
             </div>
             <br />
-            <br />
-            <!-- About Section Button-->
+            <!-- GitHub Button-->
             <div class="text-center mt-4">
                 <a class="btn btn-xl btn-outline-light" href="https://github.com/iulian-rusu">
                     <i class="fab fa-fw fa-github"></i>
@@ -119,7 +125,7 @@
         </div>
     </div>
     <!-- Experience Section-->
-    <div class="page-section bg-primary text-white mb-0" id="experience">
+    <div class="page-section bg-purple text-white mb-0" id="experience">
         <div class="container d-flex align-items-center flex-column">
             <!-- Experience Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-white">Experience</h2>
@@ -165,7 +171,7 @@
         </div>
     </div>
     <!-- Projects Section-->
-    <div class="page-section bg-purple text-white mb-0" id="projects">
+    <div class="page-section bg-primary text-white mb-0" id="projects">
         <div class="container d-flex align-items-center flex-column">
             <!-- Projects Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-white">Projects</h2>
@@ -243,9 +249,7 @@
 
                             <h4>Expression-based API</h4>
                             <p>
-                                The library allows defining a regular expression as a composition of C++ expressions
-                                (similar to <a
-                                    href="https://www.boost.org/doc/libs/1_65_1/doc/html/xpressive.html">Boost.Xpressive</a>).
+                                The library allows defining a regular expression as a composition of C++ expressions.
                                 This way, a more complex pattern can be composed from smaller individual patterns.
                                 Below is an example of creating the regex <code
                                     class="language-plaintext">(?:\d+[-/.]){2}\d+</code>
@@ -438,7 +442,7 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
                                 network.
                             </p>
                             <div class="my-3 text-info d-flex align-items-center flex-column">
-                                <a class=" btn btn-outline-info"
+                                <a class="btn btn-outline-info"
                                     href="https://github.com/iulian-rusu/genetic-nn-trainer">
                                     <i class="fab fa-fw fa-github"></i>
                                     View on GitHub

@@ -17,6 +17,13 @@ code.hljs {
 
 .hljs {
     color: #bec8ff;
+}
+
+.bg-primary .hljs {
+    background: var(--bs-dark);
+}
+
+.bg-purple .hljs {
     background: #292d3e;
 }
 
