@@ -56,6 +56,13 @@
     height: 6px;
 }
 
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    width: 2px;
+    border: 1px;
+    background-color: var(--bs-primary);
+}
+
 ::-webkit-scrollbar-track {
     background-color: black;
 }
@@ -64,11 +71,14 @@ body>div ::-webkit-scrollbar-track {
     background-color: #1b1f22;
 }
 
-::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    width: 2px;
-    border: 1px;
-    background-color: var(--bs-primary);
+* {
+    scrollbar-width: 6px;
+    scrollbar-color: var(--bs-primary), black;
+}
+
+body>div {
+    scrollbar-color: var(--bs-primary), #1b1f22;
+
 }
 
 body {
