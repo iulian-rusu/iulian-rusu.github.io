@@ -16,7 +16,7 @@ code.hljs {
 }
 
 .hljs {
-    color: #bec8ff;
+    color: var(--bs-code-fg);
 }
 
 .bg-primary .hljs {
