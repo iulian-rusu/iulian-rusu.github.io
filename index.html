@@ -23,24 +23,13 @@
 
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-md text-uppercase" id="mainNav">
         <div class="container" id="nav-container">
-            <div class="col-lg-4 mb-5 mb-lg-0" id="nav-links">
-                <a class="btn btn-outline-primary btn-social mx-1" href="#page-top"><i class="fa fa-arrow-up"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/iulian-rusu"><i
-                        class="fab fa-fw fa-github"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1"
-                    href="https://www.linkedin.com/in/iulian-rusu-95b974196/"><i
-                        class="fab fa-fw fa-linkedin-in"></i></a>
-            </div>
             <div class="navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About
-                            Me</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#experience">Experience</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#projects">Projects</a></li>
+                    <li class="nav-item mx-0 mx-md-1"><a class="nav-link py-3 px-0 px-md-3 rounded"href="#experience">Experience</a></li>
+                    <li class="nav-item mx-0 mx-md-1"><a class="nav-link py-3 px-0 px-md-3 rounded"href="#projects">Projects</a></li>
+                    <li class="nav-item mx-0 mx-md-1"><a class="nav-link py-3 px-0 px-md-3 rounded"href="#page-bottom">Contacts</a></li>
                 </ul>
             </div>
         </div>
@@ -48,11 +37,12 @@
     <!-- About Section -->
     <div class="page-section masthead bg-primary text-white mb-0" id="about">
         <div class="container">
-            <div class="row mb-5 text-center">
+            <div class="row mb-0 text-center">
                 <div class="col-md my-3">
                     <div class="lead">
                         <h1 class="headline-text">
-                            Hi, I'm&nbsp;<span href="" class="typewrite text-info" data-period="2000" data-type='[ "Iulian.", "a developer." ]'>
+                            Hi, I'm&nbsp;<span href="" class="typewrite text-info" data-period="2000"
+                                data-type='[ "Iulian.", "a developer." ]'>
                                 <span class="wrap"></span>
                             </span>
                         </h1>
@@ -70,7 +60,7 @@
                 <div class="col-md m-auto">
                     <div class="lead text-center my-3">
                         <h4 class="about-text">
-                            Some of my personal projects are described on this page. 
+                            Some of my personal projects are described on this page.
                             Check out my GitHub for more!
                         </h4>
                     </div>
@@ -120,7 +110,8 @@
                             <li>As a member of the Denied Party Screening Team, I designed and implemented
                                 an internal data analysis service.
                             </li>
-                            <li>Worked in languages like Java and TypeScript, using technologies like Angular, JAX-RS and various AWS components.
+                            <li>Worked in languages like Java and TypeScript, using technologies like Angular, JAX-RS
+                                and various AWS components.
                             </li>
                             <li>Obtained more experience in architecting and presenting technical design documents.</li>
                         </ul>
@@ -133,7 +124,8 @@
                     <h5></h5>
                     <span class="medium">
                         <ul>
-                            <li>During my internship, I researched and applied Machine Learning techniques for phishing detection.</li>
+                            <li>During my internship, I researched and applied Machine Learning techniques for phishing
+                                detection.</li>
                             <li>Designed and implemented models using libraries like TensorFlow, Keras and NumPy.
                             <li>Wrote a technical report detailing my results.</li>
                         </ul>
@@ -209,7 +201,8 @@
                                     href="https://www.boost.org/doc/libs/1_65_1/doc/html/xpressive.html">Boost.Xpressive</a>.
                                 Basically, this approach makes the regular expression a compile-time known data
                                 structure.
-                                Instead of creating a <code class="language-cpp">std::regex</code> object, which is extremely slow and
+                                Instead of creating a <code class="language-cpp">std::regex</code> object, which is
+                                extremely slow and
                                 results in horrible machine code,
                                 this library allows mapping a regular expression to a native C++ type.
                                 For example, one can write <code
@@ -255,10 +248,13 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
                             <p>
                                 The matching API supports ranges as well as iterator pairs. Any container which
                                 satisfies the
-                                <code class="language-cpp">meta::char_range</code> concept can be matched. That is, it must be a
-                                <code class="language-cpp">std::ranges::forward_range</code> and its value type must be convertible to
+                                <code class="language-cpp">meta::char_range</code> concept can be matched. That is, it
+                                must be a
+                                <code class="language-cpp">std::ranges::forward_range</code> and its value type must be
+                                convertible to
                                 <code>char32_t</code>.
-                                Matching will return an instance of <code class="language-cpp">meta::regex_result</code>, a type which
+                                Matching will return an instance of <code
+                                    class="language-cpp">meta::regex_result</code>, a type which
                                 contains information
                                 about whether the match succeeded and the captured content (including capturing groups,
                                 if present).
@@ -271,7 +267,8 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
                                 <li>
                                     Quantifiers - <code class="language-plaintext">*</code>, <code
                                         class="language-plaintext">+</code>,
-                                    <code class="language-plaintext">?</code>, <code class="language-plaintext">{3,6}</code>,
+                                    <code class="language-plaintext">?</code>, <code
+                                        class="language-plaintext">{3,6}</code>,
                                     <code class="language-plaintext">{5,}</code>
                                 </li>
                                 <li>
@@ -301,12 +298,14 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
                                         class="language-plaintext">\d</code class="language-plaintext">, <code>\S</code>
                                 </li>
                                 <li>
-                                    Anchors - <code class="language-plaintext">^</code>, <code class="language-plaintext">$</code>,
+                                    Anchors - <code class="language-plaintext">^</code>, <code
+                                        class="language-plaintext">$</code>,
                                     <code class="language-plaintext">\b</code>
                                 </li>
                                 <li>
                                     Sets - <code class="language-plaintext">[abc]</code>, <code
-                                        class="language-plaintext">[^ABC]</code>, <code class="language-plaintext">[a-z0-9]</code>
+                                        class="language-plaintext">[^ABC]</code>, <code
+                                        class="language-plaintext">[a-z0-9]</code>
                                 </li>
                                 <li>
                                     Flags like <code>icase</code> or <code>multiline</code>
@@ -401,7 +400,8 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
                                 with genericity
                                 and efficiency in mind, supporting custom underlying data types and a variable number of
                                 hidden layers, each being
-                                specified as a template argument using the <code class="language-cpp">gnnt::mlp::layer</code> class template.
+                                specified as a template argument using the <code
+                                    class="language-cpp">gnnt::mlp::layer</code> class template.
                                 This has several performance
                                 advantages, like better compiler optimizations, avoiding dynamic memory allocations at
                                 runtime and the possibility to implement forward propagation using a
@@ -469,12 +469,59 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
             </div>
         </div>
     </div>
-    <!-- Copyright Section-->
-    <div class="copyright py-4 text-center text-white">
-        <div class="container">Copyright &copy; 2022 Iulian Rusu</div>
-    </div>
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-primary-darker text-white min-w-300px">
+        <!-- Section: Links  -->
+        <div class="container">
+            <div class="row pt-5 pb-3">
+                <div class="col-md-7 mx-auto mb-md-0 mb-5 text-center">
+                    <h6 class="text-uppercase fw-bold mb-4 ">
+                       About Me
+                    </h6>
+                    <div class="row text-md-start text-white-dimmed">
+                        <div class="col">
+                            I'm a Software Engineer interested in areas like programming language design, 
+                            software architecture, distributed systems and artificial intelligence.
+                        </div>
+                        <div class="col">
+                            I am most experienced in C++, Python, Kotlin and Java. Other languages I am proficient with include
+                            C#, TypeScript, JavaScript and the Unix Shell.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mx-auto mb-md-0 mb-5 text-center">
+                    <h6 class="text-uppercase fw-bold mb-4">Contacts</h6>
+                    <div class="mx-auto text-start fit-content  text-white-dimmed">
+                        <p><i class="fas fa-home me-3"></i>
+                            <span class="footer-contact">Iași, RO</span></p>
+                        <p><i class="fas fa-envelope me-3"></i>
+                            <a href="mailto:iulian.rusu999@gmail.com" class="footer-contact">Email</a></p>
+                        <p><i class="fab fa-linkedin me-3"></i>
+                            <a href="https://www.linkedin.com/in/iulian-rusu-95b974196/" class="footer-contact">LinkedIn</a></p>
+                        <p><i class="fab fa-github me-3"></i>
+                            <a href="https://github.com/iulian-rusu" class="footer-contact">GitHub</a></p>
+                    </div>
+                    
+                </div>
+
+                <div class="col-md-2 col-lg-1 mx-auto mb-md-0 mb-4 text-center d-flex flex-column">
+                    <h6 class="text-uppercase fw-bold mb-4 ">Back</h6>
+                    <div class="mx-auto mt-md-2">
+                        <a class="btn btn-outline-primary btn-social" href="#page-top"><i class="fa fa-arrow-up"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center p-4 bg-secondary text-white-dimmed" id="page-bottom">
+            Copyright © 2022 Iulian Rusu
+        </div>
+    </footer>
+
+
     <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -487,6 +534,7 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
         crossorigin="anonymous"></script>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
     <!-- Highlight JS -->
     <script src="vendor/highlight-js/highlight.min.js"></script>
     <script>
