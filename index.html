@@ -23,22 +23,25 @@
 
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-md text-uppercase" id="mainNav">
+    <nav class="navbar navbar-expand-md text-uppercase " id="mainNav">
         <div class="container" id="nav-container">
+            <div class="col-lg-4 navbar-brand d-flex">
+                <i class="fas fa-terminal my-auto ms-3"></i>
+            </div>
             <div class="navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-0 mx-md-1"><a class="nav-link py-3 px-0 px-md-3 rounded"href="#experience">Experience</a></li>
-                    <li class="nav-item mx-0 mx-md-1"><a class="nav-link py-3 px-0 px-md-3 rounded"href="#projects">Projects</a></li>
-                    <li class="nav-item mx-0 mx-md-1"><a class="nav-link py-3 px-0 px-md-3 rounded"href="#page-bottom">Contacts</a></li>
+                    <li class="nav-item mx-0 mx-md-1"><a class="nav-link py-3 px-0 px-md-3 rounded" href="#experience">Experience</a></li>
+                    <li class="nav-item mx-0 mx-md-1"><a class="nav-link py-3 px-0 px-md-3 rounded" href="#projects">Projects</a></li>
+                    <li class="nav-item mx-0 mx-md-1"><a class="nav-link py-3 px-0 px-md-3 rounded" href="#page-bottom">Contacts</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- About Section -->
-    <div class="page-section masthead bg-primary text-white mb-0" id="about">
+    <div class="page-section bg-primary text-white mb-0 d-flex" id="about">
         <div class="container">
             <div class="row mb-0 text-center">
-                <div class="col-md my-3">
+                <div class="col-md mb-5">
                     <div class="lead">
                         <h1 class="headline-text">
                             Hi, I'm&nbsp;<span href="" class="typewrite text-info" data-period="2000"
@@ -50,46 +53,53 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md m-auto">
-                    <div class="lead text-center my-3">
-                        <h4 class="about-text">
-                            I'm a Computer Science and Engineering graduate, working as a software developer.
-                        </h4>
+                <div class="col-md m-auto mb-3 mb-md-0 ms-md-5">
+                    <div class="row">
+                        <div class="lead text-center my-3">
+                            <h4 class="about-text">
+                                Personal
+                            </h4>
+                            <p>
+                                This page showcases some projects I've developed in my free time.
+                                Check out more on my GitHub!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- GitHub Button-->
+                        <div class="text-center">
+                            <a class="btn btn-xl btn-outline-info fixed-width-btn" href="https://github.com/iulian-rusu">
+                                <i class="fab fa-fw fa-github"></i> &nbsp;GitHub
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md m-auto">
-                    <div class="lead text-center my-3">
-                        <h4 class="about-text">
-                            Some of my personal projects are described on this page.
-                            Check out my GitHub for more!
-                        </h4>
+                <div class="col-md m-auto me-md-5">
+                    <div class="row">
+                        <div class="lead text-center my-3">
+                            <h4 class="about-text">
+                                Career
+                            </h4>
+                            <p>
+                                I work as a software engineer, having finished my degree
+                                in Computer Science and Engineering.
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row mx-auto btn-row">
-                <div class="col my-3">
-                    <!-- Experience Section Button-->
+                    <div class="row">
+                         <!-- Experience Section Button-->
                     <div class="text-center">
-                        <a class="btn btn-xl btn-outline-primary" href="#experience">
-                            <i class="fa fa-arrow-down"></i>
-                            &nbsp;Experience
+                        <a class="btn btn-xl btn-outline-primary fixed-width-btn" href="#experience">
+                            <i class="fa fa-arrow-down"></i> &nbsp;Experience
                         </a>
                     </div>
-                </div>
-                <div class="col my-3">
-                    <!-- GitHub Button-->
-                    <div class="text-center">
-                        <a class="btn btn-xl btn-outline-info" href="https://github.com/iulian-rusu">
-                            <i class="fab fa-fw fa-github"></i>
-                            GitHub
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Experience Section-->
-    <div class="page-section bg-primary text-white mb-0" id="experience">
+    <div class="page-section bg-primary text-white mb-0 d-flex" id="experience">
         <div class="container d-flex align-items-center flex-column">
             <!-- Experience Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-white">Experience</h2>
@@ -135,15 +145,14 @@
             </ul>
             <!-- Projects Section Button-->
             <div class="text-center mt-4">
-                <a class="btn btn-xl btn-outline-primary" href="#projects">
-                    <i class="fa fa-arrow-down"></i>
-                    &nbsp;My Projects
+                <a class="btn btn-xl btn-outline-primary fixed-width-btn" href="#projects">
+                    <i class="fa fa-arrow-down"></i> &nbsp;Projects
                 </a>
             </div>
         </div>
     </div>
     <!-- Projects Section-->
-    <div class="page-section bg-primary text-white mb-0" id="projects">
+    <div class="page-section bg-primary text-white mb-0 d-flex" id="projects">
         <div class="container d-flex align-items-center flex-column">
             <!-- Projects Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-white">Projects</h2>
@@ -214,7 +223,7 @@
 
                             </p>
                             <div class="my-3 text-info d-flex align-items-center flex-column">
-                                <a class=" btn btn-outline-info" href="https://github.com/iulian-rusu/mregex">
+                                <a class=" btn btn-lg btn-outline-info" href="https://github.com/iulian-rusu/mregex">
                                     <i class="fab fa-fw fa-github"></i>
                                     View on GitHub
                                 </a>
@@ -343,7 +352,7 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
                             </ul>
                             </p>
                             <div class="my-3 text-info d-flex align-items-center flex-column">
-                                <a class=" btn btn-outline-info" href="https://github.com/iulian-rusu/discode">
+                                <a class=" btn btn-lg btn-outline-info" href="https://github.com/iulian-rusu/discode">
                                     <i class="fab fa-fw fa-github"></i>
                                     View on GitHub
                                 </a>
@@ -422,7 +431,7 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
                                 network.
                             </p>
                             <div class="my-3 text-info d-flex align-items-center flex-column">
-                                <a class="btn btn-outline-info"
+                                <a class="btn btn-lg btn-outline-info"
                                     href="https://github.com/iulian-rusu/genetic-nn-trainer">
                                     <i class="fab fa-fw fa-github"></i>
                                     View on GitHub

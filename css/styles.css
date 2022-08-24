@@ -3458,7 +3458,6 @@ textarea.form-control-lg {
 
 .btn-lg, .btn-group-lg > .btn {
   padding: 0.5rem 1rem;
-  font-size: 1.25rem;
   border-radius: 0.75rem;
 }
 
@@ -3911,18 +3910,28 @@ textarea.form-control-lg {
   padding: 0.5rem 1rem;
   color: var(--bs-white);
   text-decoration: none;
-  border: 2px solid var(--bs-bg-primary);
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, border 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, border-bottom 0.15s ease-in-out;
 }
+
+#mainNav .nav-link {
+    border-bottom: 2px solid transparent;
+    border-radius: 0 !important;
+}
+
+#mainNav .nav-link:hover, #mainNav .nav-link:focus {
+    border-bottom: 2px solid var(--bs-primary);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .nav-link {
     transition: none;
   }
 }
+
 .nav-link:hover, .nav-link:focus {
   color: var(--bs-primary);
-  border: 2px solid var(--bs-primary);
 }
+
 .nav-link.disabled {
   color: #6c757d;
   pointer-events: none;
@@ -10921,7 +10930,7 @@ html {
 }
 
 .page-section {
-  padding: 6rem 0;
+  padding: 5rem 0;
   min-width: 300px;
   min-height: 100vh;
 }
@@ -11156,12 +11165,13 @@ html {
 }
 
 .info-tag {
-    font-size: 0.875em !important;
-    font-family: var(--bs-font-monospace) !important;
-    padding: 0.15em 0.35em;
-    border-radius: 0.25em;
+    font-size: 0.7em !important;
+    font-weight: bold;
+    padding: 0.5em 0.7em;
+    border-radius: 4px;
     background-color: var(--bs-dark-purple);
     color: var(--bs-info);
+    font-family: var(--bs-font-secondary) !important;
 }
 
 .bred {
@@ -11173,8 +11183,8 @@ html {
     font-size: 145%;
 }
 
-#about .btn {
-    width: 12rem;
+.fixed-width-btn {
+    width: 12rem !important;
 }
 
 .headline-text {
@@ -11197,4 +11207,12 @@ html {
 
 .fit-content {
     max-width: fit-content !important;
+}
+
+#page-top .container {
+    margin: auto !important;
+}
+
+#logo-container {
+  background-image: url(assets/logo.svg);
 }
