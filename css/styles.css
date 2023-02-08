@@ -27,7 +27,6 @@
   --bs-gray-dark: #343a40;
   --bs-primary: #1abc9c;
   --bs-secondary: #34495e;
-  --bs-codebg: #2c3d53;
   --bs-success: #198754;
   --bs-info: rgb(88, 157, 246);
   --bs-info-darker: #4982cc;
@@ -11193,12 +11192,16 @@ html {
 
 .headline-text {
     font-family: var(--bs-font-monospace) !important;
-    padding: 0.12em 0.3em;
+    padding: 0.2em 0.5em;
     margin: 0 0.1em;
     border-radius: 0.25em;
     color: var(--bs-code-fg);
-    max-width: 550px;
+    width: 750px;
+    max-width: 80%;
     margin: auto;
+    background-color: var(--bs-dark);
+    overflow-x: scroll;
+    white-space: nowrap;
 }
 
 #experience li::marker {

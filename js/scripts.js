@@ -3,6 +3,8 @@ const colorClasses = [
     'text-info'
 ]
 
+const terminalText = document.getElementById("terminalText");
+
 const TxtType = function (el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
@@ -23,7 +25,7 @@ TxtType.prototype.tick = function() {
         this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
 
-    this.el.innerHTML = `<span class="wrap m-0 ${colorClasses[i % 2]}">` + this.txt + '</span>';
+    this.el.innerHTML = `<span class="wrap m-0">` + this.txt + '</span>';
 
     const that = this;
     let delta = 200 - Math.random() * 100;
@@ -37,8 +39,7 @@ TxtType.prototype.tick = function() {
         this.isDeleting = false;
         this.loopNum++;
         delta = 500;
-    }
-
+    }  
     setTimeout(() => { that.tick(); }, delta);
 };
 
