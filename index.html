@@ -112,8 +112,9 @@
             <!-- Experience Section Content-->
             <ul class="outer-list col-md-8">
                 <li class="lead">
-                    <h3 class="text-primary">Software Development Engineer - Amazon</h3>
-                    <span class="info-tag">December 2022 - Present</span>
+                    <h3 class="text-primary">Software Development Engineer</h3>
+                    <span class="tag tag-amazon">Amazon</span>
+                    <span class="tag tag-info">December 2022 - Present</span>
                     <h5></h5>
                     <span class="medium">
                         <ul>
@@ -124,15 +125,16 @@
                             </li>
                             <li>
                                 <b class="fw-bold">Skills and technologies</b>:
-                                Java, Python, Shell Scripting, Linux, AWS (S3, DynamoDB, EC2, Lambda, CloudFormation).
+                                Java, Python, Docker, Linux, AWS (S3, DynamoDB, EC2, Lambda, CloudFormation).
                             </li>
                         </ul>
                     </span>
                     <br />
                 </li>
                 <li class="lead">
-                    <h3 class="text-primary">Software Development Engineer Intern - Amazon</h3>
-                    <span class="info-tag">July - October 2022</span>
+                    <h3 class="text-primary">Software Development Engineer Intern</h3>
+                    <span class="tag tag-amazon">Amazon</span>
+                    <span class="tag tag-info">July - October 2022</span>
                     <h5></h5>
                     <span class="medium">
                         <ul>
@@ -149,8 +151,9 @@
                     <br />
                 </li>
                 <li class="lead">
-                    <h3 class="text-primary">Data Science Intern - Bitdefender</h3>
-                    <span class="info-tag">July - October 2021</span>
+                    <h3 class="text-primary">Data Science Intern</h3>
+                    <span class="tag tag-bitdefender">Bitdefender</span>
+                    <span class="tag tag-info">July - October 2021</span>
                     <h5></h5>
                     <span class="medium">
                         <ul>
@@ -258,13 +261,14 @@
                                 The library allows defining a regular expression as a composition of C++ expressions.
                                 This way, a more complex pattern can be composed from smaller individual patterns.
                                 Below is an example of creating the regex <code
-                                    class="language-plaintext">(?:\d+[-/.]){2}\d+</code>
+                                    class="language-plaintext">[-+]?0x[\da-fA-F]+</code>
                                 using this API:
                             <pre class="code-block"><code class="language-cpp">// All expression-based API components are in the namespace 'xpr'
-auto digits = +xpr::digit;      // Matches one or more digits
-auto sep = xpr::regex&lt;"[-/.]">; // Matches '-', '/' or '.'
-auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
-                            </p>
+auto sign = xpr::chr<'-'> | xpr::chr<'+'>;
+auto prefix = xpr::str<"0x">;
+auto hexdigit = xpr::digit | xpr::range<'a', 'f'> | xpr::range<'A', 'F'>;
+auto hexnumber = xpr::maybe(sign) >> prefix >> +hexdigit;</code></pre>
+</p>
                             <h4>Matching</h4>
                             <p>
                                 &emsp; Matching is implemented using the backtracking approach, since this algorithm is
@@ -297,49 +301,14 @@ auto date = xpr::exactly&lt;2>(digits, sep) >> digits;</code></pre>
                                 The library supports a large portion of the standard PCRE syntax, including
                                 features like:
                             <ul>
-                                <li>
-                                    Quantifiers - <code class="language-plaintext">*</code>, <code
-                                        class="language-plaintext">+</code>,
-                                    <code class="language-plaintext">?</code>, <code
-                                        class="language-plaintext">{3,6}</code>,
-                                    <code class="language-plaintext">{5,}</code>
-                                </li>
-                                <li>
-                                    Capturing groups - <code class="language-plaintext">(expr)</code>, <code
-                                        class="language-plaintext">(?&lt;name&gt;expr)</code>
-                                </li>
-                                <li>
-                                    Non-capturing groups - <code class="language-plaintext">(?:expr)</code>
-                                </li>
-                                <li>
-                                    Lookaheads - <code class="language-plaintext">(?=expr)</code>, <code
-                                        class="language-plaintext">(?!expr)</code>
-                                </li>
-                                <li>
-                                    Lookbehinds- <code class="language-plaintext">(?<=expr)</code>, <code
-                                        class="language-plaintext">(?&lt;!expr)</code>
-                                </li>
-                                <li>
-                                    Backreferences - <code class="language-plaintext">\12</code>, <code
-                                        class="language-plaintext">\k&lt;name&gt;</code>
-                                </li>
-                                <li>
-                                    Alternations - <code class="language-plaintext">|</code>
-                                </li>
-                                <li>
-                                    Special character classes - <code class="language-plaintext">\w</code>, <code
-                                        class="language-plaintext">\d</code class="language-plaintext">, <code>\S</code>
-                                </li>
-                                <li>
-                                    Anchors - <code class="language-plaintext">^</code>, <code
-                                        class="language-plaintext">$</code>,
-                                    <code class="language-plaintext">\b</code>
-                                </li>
-                                <li>
-                                    Sets - <code class="language-plaintext">[abc]</code>, <code
-                                        class="language-plaintext">[^ABC]</code>, <code
-                                        class="language-plaintext">[a-z0-9]</code>
-                                </li>
+                                <li>Greedy, lazy and possessive quantifiers</li>
+                                <li>Alternations and sets</li>
+                                <li>Capturing groups, including named captures</li>
+                                <li>Backreferences and named backreferences</li>
+                                <li>Non-capturing groups</li>
+                                <li>Lookaheads and lookbehinds with arbitrary expressions</li>
+                                <li>Atomic groups</li>
+                                <li>Support for common escape sequences</li>
                                 <li>
                                     Flags like <code>icase</code> or <code>multiline</code>
                                 </li>

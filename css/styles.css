@@ -33,7 +33,7 @@
   --bs-warning: #ffc107;
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
-  --bs-dark: #212529;  
+  --bs-dark: #121921;  
   --bs-bg-primary: rgb(13, 17, 23);
   --bs-bg-primary-darker: rgb(10, 13, 17);
   --bs-code-fg: #bec8ff;
@@ -72,7 +72,7 @@
 }
 
 body>div ::-webkit-scrollbar-track {
-    background-color: #1b1f22;
+    background-color: #0f151b;
 }
 
 * {
@@ -11167,14 +11167,31 @@ html {
   }
 }
 
-.info-tag {
+.tag-info {
+    color: var(--bs-info);
+}
+
+.tag-primary {
+    color: var(--bs-primary);
+}
+
+.tag-amazon {
+    color: #ff9900;
+}
+
+.tag-bitdefender {
+    color: #dd3c4c;
+}
+
+.tag {
     font-size: 0.7em !important;
     font-weight: bold;
     padding: 0.5em 0.7em;
-    border-radius: 4px;
-    background-color: var(--bs-dark-purple);
-    color: var(--bs-info);
+    border-radius: 6px;
+    margin-left: 1px;
+    margin-right: 1px;
     font-family: var(--bs-font-secondary) !important;
+    background-color: var(--bs-dark);
 }
 
 .bred {
